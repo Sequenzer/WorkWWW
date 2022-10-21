@@ -1,0 +1,60 @@
+:root {
+  --main-dark-color: #010d28;
+  --main-light-color: #ffffff;
+  --sqrt2: 1.41421356237;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./public/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: auto;
+}
+
+.corner {
+  z-index: -1;
+  width: 50vh;
+  height: 10vh;
+  left: 0;
+  top: 0;
+  transform-origin: bottom left;
+  transform: translateY(20vh) rotate(-45deg);
+  position: absolute;
+  background-color: var(--main-dark-color);
+  filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.15))
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15))
+    drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.15))
+    drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.15));
+}
+html {
+  background-color: var(--main-light-color);
+}
+
+body {
+  color: var(--main-dark-color);
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  align-self: center;
+  background-color: var(--main-light-color);
+  border-radius: 5%;
+}
+h2 {
+  background-color: var(--main-light-color);
+  border-radius: 5%;
+}
+#pic {
+  width: 25%;
+  align-self: center;
+  filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.15))
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15))
+    drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.15))
+    drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.15));
+  border-radius: 1%;
+}
+p {
+  width: 50%;
+}
