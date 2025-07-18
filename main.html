@@ -1,0 +1,167 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css" />
+	<title>Marcel Wack</title>
+  <!--<script src="bg_animation.js" defer></script>-->
+</head>
+<body>
+<header>
+  <nav class="primary_nav fixed-top">
+    <input type="checkbox" id="nav_toggle" class="nav_toggle_checkbox" />
+    <label for="nav_toggle" class="nav_toggle" aria-label="Toggle navigation">&#9776;</label>
+    <ul class="nav_list">
+      <li class="nav_item" href="#research"><a class="nav_item_1" href="#research">Research</a></li>
+      <li class="nav_item"><a class="nav_item_1" href="#cv">CV</a></li>
+      <li class="nav_item "><a class="nav_item_2" href="#top">Marcel Wack</a></li>
+      <li class="nav_item"><a class="nav_item_1" href="#coding">Coding</a></li>
+      <li class="nav_item"><a class="nav_item_1" href="#teaching">Teaching</a></li>
+		</ul>
+	</nav>
+</header>
+<section class="landing" id="home">
+  <div class="bio">
+    <picture class="headshot">
+      <img 
+        src="./public/pics/Website_Picture_smaller.png" 
+        alt="Picture of Marcel Wack"
+        id="pic"
+        />
+    <div class="socials">
+      <a class="linkedin" rel="me" href="#top">
+        <img src="./public/logos/linkedin.png" alt="LinkedIn Logo"></img>
+      </a>
+      <a class="github" rel="me" href="#top">
+        <img src="./public/logos/github_alt.png" alt="GitHub Logo" ></img>
+      </a>
+    </div>
+    </picture>
+    <div class="bio_text">
+      <h1>About Me</h1>
+      <p>
+      I am a Ph.D. student at the Technical University of Berlin, working as a
+      researcher and teaching assistant in the
+      <a
+        href="https://www.math.tu-berlin.de/fachgebiete_ag_diskalg/fg_diskrete_mathematik_geometrie/v_menue/diskrete_mathematik_geometrie/"
+      >
+        Discrete Mathematics/Geometry</a
+      >
+      group under the supervision of
+      <a href="https://page.math.tu-berlin.de/~joswig/">Michael Joswig</a>. 
+I enjoy working on problems involving hard computational challenges and the generation of large sets of experimental
+data.
+My main contributions so far lie at the intersection of quantum information theory and combinatorics. These contributions have been made in the development of the notions of quantum isomorphism and quantum symmetries for matroids.
+      <br />
+      All the while, I am a developer of all things non-commutative in the computer algebra system OSCAR.
+      </p>
+      <address>
+      <h1>Contact</h1>
+      Email: <a href="mailto:wack[at]math.tu-berlin.de">wack[at]math.tu-berlin.de</a> <br />
+      Office: <span>EN 58</span> <br />
+      Technische Universität Berlin <br />
+      Straße des 17. Juni 136 <br />
+      10623 Berlin <br />
+      Germany
+      </address>
+    </div>
+  </div>
+  <!--<canvas id="bg_animation"></canvas>-->
+</section>
+<section id="research">
+  <h1>Research</h1>
+  <h2>Publications</h2>
+  <ul class="publication_list">
+    <li class="publication_item">
+      <span class="publication_author">D. Corey, M. Joswig, J. Schanz, <u>M. Wack</u>, M. Weber</span>,
+      <strong>Quantum automorphisms of matroids</strong>, <em>Journal of Algebra vol. 667, 2025</em>.
+      <a href="https://doi.org/10.1016/j.jalgebra.2024.11.036" target="_blank">Link</a>
+    </li>
+    <li class="publication_item">
+      <span class="publication_author">L. Schmitz, <u>M. Wack</u></span>,
+      <strong>Finite Gröbner bases for quantum symmetric groups</strong>, <em>(preprint), 2025.</em>
+      <a href="https://doi.org/10.48550/arXiv.2503.15104" target="_blank">Link</a>
+    </li>
+    <li class="publication_item">
+      <span class="publication_author">D. Corey, S. Schmidt, <u>M. Wack</u></span>,
+      <strong>Quantum isomorphism games</strong>, <em>(preprint), 2025.</em>
+      <a href="https://doi.org/10.48550/arXiv.2507.06225" target="_blank">Link</a> 
+    </li>
+  </ul>
+  <p>
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis consectetur ipsam expedita, harum et saepe a aut perspiciatis aliquid. Sequi libero neque cupiditate voluptatibus molestias labore quasi rerum officia, autem pariatur quas laudantium eligendi minus iure, provident quos illum mollitia exercitationem, fuga explicabo aliquid quis sed. Odit dolores nam consectetur explicabo hic tempore quod esse recusandae? Saepe, doloremque eos! Consequuntur sapiente dignissimos esse sequi omnis quas, fugiat, dolor vitae dicta perferendis, maxime voluptas minus eos aut voluptatibus similique perspiciatis beatae possimus. Vitae omnis expedita corporis perferendis, ab doloribus nisi accusantium consequatur vero quam qui corrupti magnam vel, modi voluptas dolorum.
+  </p>
+</section>
+<section id="coding">
+  <h1>Coding</h1>
+  <p>
+  Since 2022 I am part of the development team of Polymake, a software for research in polyhedral geometry, combinatorics, and related areas.
+  As a member of the team, I am involved in the ongoing process of refactoring the code base from C++11 to C++17.
+  Additionally, I implemented an algorithm from a fifty-year-old paper <a href ="https://doi.org/10.1016/0012-365X(75)90075-8">paper</a> by Donald E. Knuth, for randomly generating matroid, in a function called <a href="https://polymake.org/doku.php/documentation/latest/matroid#random_matroid"><code>random_matroid</code></a>.
+  </p>
+  <h2>Projects</h2>
+  <ul class="publication_list">
+    <li class="publication_item">
+      <a href="https://github.com/dmg-lab/QuantumAutomorphismGroups.jl" target="_blank">QuantumAutomorphismGroups.jl</a>
+      <strong>Description:</strong>
+      <span>A database auf quantum automorphism groups of matroids.</span>
+      <strong>Language:</strong>
+      <em>Julia</em>
+    </li>
+    <li class="publication_item">
+      <a href="https://github.com/dmg-lab/GroebnerQuantumSym.jl" target="_blank">GroebnerQuantumSym.jl</a>
+      <strong>Description:</strong>
+      <span>Tools for the generalised computation of Gröbner bases for quantum symmetric groups.</span>
+      <strong>Language:</strong>
+      <em>Julia</em>
+  </ul>
+
+<section/>
+
+<section id="teaching">
+  <h1>Teaching</h1>
+  <p>
+  As part of my teaching duties, I have been involved in the following courses at TU Berlin:
+  </p>
+  <ul class="teaching_list">
+    <li class="teaching_item">
+      <strong>Computerorientierte Mathematik I</strong>
+      <em class="teaching_semester">WS 2022/23</em>
+      <strong>Keywords:</strong>
+      <span>Linear Algebra, Matrix Theory</span>
+    </li>
+    <li class="teaching_item">
+      <strong>Computerorientierte Mathematik II</strong>
+      <em class="teaching_semester">SS 2023</em>
+      <strong>Keywords:</strong>
+      <span>Linear Algebra, Matrix Theory</span>
+    </li>
+    <li class="teaching_item">
+      <strong>Mathematische Physik I</strong>
+      <em class="teaching_semester">WS 2023/24</em>
+      <strong>Keywords:</strong>
+      <span>Linear Algebra, Matrix Theory</span>
+    </li>
+    <li class="teaching_item">
+      <strong>Computerorientierte Mathematik II</strong>
+      <em class="teaching_semester">SS 2024</em>
+      <strong>Keywords:</strong>
+      <span>Linear Algebra, Matrix Theory</span>
+    </li>
+    <li class="teaching_item">
+      <strong>Computerorientierte Mathematik I</strong>
+      <em class="teaching_semester">WS 2024/25</em>
+      <strong>Keywords:</strong>
+      <span>Linear Algebra, Matrix Theory</span>
+    </li>
+    <li class="teaching_item">
+      <strong>Computerorientierte Mathematik II</strong>
+      <em class="teaching_semester">SS 2025</em>
+      <strong>Keywords:</strong>
+      <span>Linear Algebra, Matrix Theory</span>
+    </li>
+
+  </ul>
+</section>
+</body>
+</html>
