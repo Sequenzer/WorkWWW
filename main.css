@@ -231,6 +231,16 @@ li.nav_item:before {
 .bio_text {
   grid-column: 2 / 4;
 }
+.bio_text p {
+  text-align: justify;
+  line-height: 1.6;
+}
+.bio_text p a {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+
 .fixed-top {
   position: fixed;
   height: 10vh;
