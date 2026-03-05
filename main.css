@@ -165,9 +165,7 @@ li.nav_item:before {
     width: 100%;
   }
   .nav_toggle {
-    display: block;
-    margin: 0 0 0 em;
-    float: right;
+    display: none;
   }
   .nav_toggle_checkbox:checked ~ .nav_list {
     display: flex;
@@ -240,6 +238,104 @@ li.nav_item:before {
   text-decoration: underline;
 }
 
+.coding p {
+  text-align: justify;
+}
+
+@media (max-width: 600px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /* Bio section */
+  #pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bio {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .bio_text {
+    grid-column: 1 / 2;
+    text-align: center;
+  }
+  .headshot {
+    margin-bottom: 1em;
+  }
+
+  address, .contact, .bio_text address {
+    text-align: left;
+  }
+
+
+  /* Stack cards and center text for publication, teaching, coding */
+  .research .publication_list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0;
+  }
+  .research .publication_item {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 1em 0.5em;
+    display: list-item;
+  }
+
+  .research .publication_list .publication_item > a,
+  .research .publication_list .publication_item > em {
+    display: block;
+  }
+
+
+  /* Hide description and label */
+  .coding .publication_list .publication_item > strong,
+  .coding .publication_list .publication_item > span {
+    display: none;
+  }
+
+  /* Show language in brackets after the link */
+  .coding .publication_list .publication_item em {
+    display: inline;
+  }
+  .coding .publication_list .publication_item a::after {
+    content: "(" attr(data-lang) ")";
+    margin-left: 0.5em;
+    color: var(--color-off-black);
+  }
+  /* Hide the original <em> element */
+  .coding .publication_list .publication_item em {
+    display: none;
+  }
+
+
+  .teaching_item strong:first-child {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 0.2em;
+  }
+  .teaching_item .teaching_semester {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 0.5em;
+  }
+  .teaching_item strong:not(:first-child),
+  .teaching_item span {
+    display: none;
+  }
+
+
+}
+
 
 .fixed-top {
   position: fixed;
@@ -250,8 +346,9 @@ li.nav_item:before {
 }
 
 .landing {
-  margin-top: 10vh; /* Adjust this value based on the height of your header */
-  height: 90vh;
+  margin-top: 10vh;
+  min-height: 90vh;
+  margin-bottom: 2em;
 }
 
 .publication_item {
@@ -259,7 +356,6 @@ li.nav_item:before {
   padding: 0.75em;
   background: #f8f9fa;
   border-radius: 6px;
-  list-style-type: disc;
 }
 
 .publication_item strong {
@@ -298,7 +394,6 @@ li.teaching_item {
   display: flex;
   gap: 0.5em;
   align-items: center;
-  list-style-type: disc;
 }
 
 .teaching_item strong {
