@@ -9,6 +9,8 @@
   --color-gray: #555;
   --main-light-color: #f5Ffff;
   --sqrt2: 1.41421356237;
+  --shadow-card: 0 4px 8px rgba(0, 0, 0, 0.1);
+  interpolate-size: allow-keywords;
 }
 
 @font-face {
@@ -171,7 +173,6 @@ li.nav_item:before {
     display: flex;
   }
 }
-```
 
 
 
@@ -217,7 +218,7 @@ li.nav_item:before {
 #pic {
   width: 90%;
   height: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
 }
 
 .bio{
@@ -285,20 +286,20 @@ li.nav_item:before {
     text-align: left;
     margin: 0;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-card);
     padding: 1em 0.5em;
     display: list-item;
   }
 
-  .research .publication_list .publication_item > a,
-  .research .publication_list .publication_item > em {
+  .research .publication_list .publication_item summary > a,
+  .research .publication_list .publication_item summary > em {
     display: block;
   }
 
 
   /* Hide description and label */
-  .coding .publication_list .publication_item > strong,
-  .coding .publication_list .publication_item > span {
+  .coding .publication_list .publication_item summary > strong,
+  .coding .publication_list .publication_item summary > span {
     display: none;
   }
 
@@ -356,6 +357,7 @@ li.nav_item:before {
   padding: 0.75em;
   background: #f8f9fa;
   border-radius: 6px;
+  box-shadow: var(--shadow-card);
 }
 
 .publication_item strong {
@@ -367,13 +369,16 @@ li.nav_item:before {
 }
 
 .publication_item a {
-  margin-left: 0.5em;
   color: var(--color-primary-dark);
   text-decoration: underline;
 }
 
+.publication_item summary a {
+  margin-left: 0.5em;
+}
+
 ul.publication_list {
-  list-style-type: disc;
+  list-style-type: none;
   padding-left: 2em;
 }
 
@@ -381,6 +386,46 @@ ul.publication_list {
   font-weight: normal;
   color: var(--color-gray);
   margin-right: 0.3em;
+}
+
+details.abstract summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details.abstract summary::-webkit-details-marker {
+  display: none;
+}
+
+details.abstract summary::before {
+  content: "\25B8";
+  display: inline-block;
+  margin-right: 0.4em;
+  color: var(--color-primary-dark);
+  transition: transform 0.3s ease;
+}
+
+details.abstract[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details.abstract p {
+  color: var(--color-gray);
+  text-align: justify;
+  hyphens: auto;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  margin: 0.5em 0 0 1.3em;
+}
+
+details.abstract::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
+}
+
+details.abstract[open]::details-content {
+  block-size: auto;
 }
 
 ul.teaching_list {
