@@ -1,42 +1,66 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    const theme_query = matchMedia("(prefers-color-scheme: dark)");
+    document.documentElement.dataset.theme = localStorage.getItem("theme") ?? "";
+    function toggle_theme() {
+      const root = document.documentElement;
+      const flip = () => {
+        const dark = root.dataset.theme ? root.dataset.theme === "dark" : theme_query.matches;
+        root.dataset.theme = dark ? "light" : "dark";
+        localStorage.setItem("theme", root.dataset.theme);
+      };
+      if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.startViewTransition(flip);
+      else flip();
+    }
+    let last_scroll = 0;
+    addEventListener("scroll", () => {
+      const y = scrollY;
+      if (Math.abs(y - last_scroll) < 4) return;
+      const nav = document.querySelector(".primary_nav");
+      nav.classList.toggle("nav_hidden", y > last_scroll && y > nav.offsetHeight);
+      nav.classList.toggle("nav_scrolled", y > nav.offsetHeight);
+      last_scroll = y;
+    }, { passive: true });
+  </script>
   <link rel="stylesheet" href="main.css" />
+  <link rel="icon" href="public/favicon_ring.svg" type="image/svg+xml">
 	<title>Marcel Wack</title>
   <!--<script src="bg_animation.js" defer></script>-->
+  <script src="public/qig/main.js" defer></script>
 </head>
 <body>
 <header>
   <nav class="primary_nav fixed-top">
     <input type="checkbox" id="nav_toggle" class="nav_toggle_checkbox" />
-    <label for="nav_toggle" class="nav_toggle" aria-label="Toggle navigation">&#9776;</label>
-    <ul class="nav_list">
+    <label for="nav_toggle" class="nav_toggle" aria-label="Toggle navigation"></label>
+    <ul class="nav_list" onclick="document.getElementById('nav_toggle').checked = false">
       <li class="nav_item" href="#research"><a class="nav_item_1" href="#research">Research</a></li>
-      <li class="nav_item" style="visibility:hidden;"><a class="nav_item_1" href="#cv">CV</a></li>
+      <li class="nav_item nav_placeholder" style="visibility:hidden;"><a class="nav_item_1" href="#cv">CV</a></li>
       <li class="nav_item "><a class="nav_item_2" href="#top">Marcel Wack</a></li>
       <li class="nav_item"><a class="nav_item_1" href="#coding">Coding</a></li>
       <li class="nav_item"><a class="nav_item_1" href="#teaching">Teaching</a></li>
 		</ul>
 	</nav>
 </header>
-<section class="landing" id="home">
+  <section class="landing" id="home">
+  <canvas id="qig_canvas"></canvas>
+  <button class="theme_toggle" onclick="toggle_theme()" aria-label="Toggle dark mode"></button>
   <div class="bio">
-    <picture class="headshot">
-      <img 
-        src="./public/pics/Website_Picture_smaller.png" 
-        alt="Picture of Marcel Wack"
-        id="pic"
-        />
-    <div class="socials" style="visibility:hidden;">
-      <a class="linkedin" rel="me" href="#top">
-        <img src="./public/logos/linkedin.png" alt="LinkedIn Logo"></img>
-      </a>
-      <a class="github" rel="me" href="#top">
-        <img src="./public/logos/github_alt.png" alt="GitHub Logo" ></img>
-      </a>
+    <div class="headshot">
+      <img src="./public/pics/headshot.webp" alt="Picture of Marcel Wack" id="pic" width="1000" height="900" />
+      <nav class="socials">
+        <a href="https://www.linkedin.com/in/marcel-wack-96b958351/" rel="me" target="_blank">
+          <img src="./public/logos/linkedin.png" alt="LinkedIn" />
+        </a>
+        <a href="https://github.com/Sequenzer" rel="me" target="_blank">
+          <img src="./public/logos/github_alt.png" alt="GitHub" />
+        </a>
+      </nav>
     </div>
-    </picture>
     <div class="bio_text">
       <h1>About Me</h1>
       <p>
@@ -128,8 +152,8 @@ My main contributions so far lie at the intersection of quantum information theo
       <details class="abstract">
         <summary>
           <span class="publication_author">Z. Geiselmann, M. Joswig, L. Kastner, K. Mundinger, S. Pokutta, C. Spiegel, <u>M. Wack</u>, M. Zimmer,</span>
-          <strong>Fast Isotopy Computation for T-Curves</strong>, <em>(preprint), 2026.</em>
-          <a href="https://doi.org/10.48550/arXiv.2604.09221" target="_blank">Link</a>
+          <strong>Fast Isotopy Computation for T-Curves</strong>, <em>Mathematical Software – ICMS 2026, Lecture Notes in Computer Science, Springer, 2026.</em>
+          <a href="https://icms-conference.org/2026/papers/paper32/main.pdf" target="_blank">Link</a>
         </summary>
         <p>
 A T-curve of degree d is given by a regular unimodular triangulation of the dilated two simplex
@@ -179,7 +203,7 @@ of all 121 real schemes of degree seven by T-curves.
           <span>A quantitative backtesting engine for trading strategies in Julia.
           </span>
           <strong>Language:</strong>
-          <em>C++</em>
+          <em>Julia</em>
         </summary>
         <p>
         A backtesting engine for quantitative finance, written in Julia and focused on research and signal authoring.
@@ -225,63 +249,40 @@ of all 121 real schemes of degree seven by T-curves.
 
   </ul>
 
-<section/>
+</section>
 
 <section id="teaching">
   <h1>Teaching</h1>
   <p>
-  As part of my teaching duties, I have been involved in the following courses at TU Berlin:
+  I have taught the following courses, as teaching assistant at TU Berlin and before that as student assistant at Goethe University Frankfurt:
   </p>
-  <ul class="teaching_list">
-    <li class="teaching_item">
-      <strong>Computational Mathematics I</strong>
-      <em class="teaching_semester">WS 2022/23</em>
-      <strong>Keywords:</strong>
-      <span>data structures, algorithms, Python</span>
-    </li>
-    <li class="teaching_item">
-      <strong>Computational Mathematics II</strong>
-      <em class="teaching_semester">SS 2023</em>
-      <strong>Keywords:</strong>
-      <span>data structures, algorithms, Julia</span>
-    </li>
-    <li class="teaching_item">
-      <strong>Mathematical Physics I</strong>
-      <em class="teaching_semester">WS 2023/24</em>
-      <strong>Keywords:</strong>
-      <span>dynamical systems, differential equations</span>
-    </li>
-    <li class="teaching_item">
-      <strong>Computational Mathematics II</strong>
-      <em class="teaching_semester">SS 2024</em>
-      <strong>Keywords:</strong>
-      <span>data structures, algorithms, Julia</span>
-    </li>
-    <li class="teaching_item">
-      <strong>Computational Mathematics I</strong>
-      <em class="teaching_semester">WS 2024/25</em>
-      <strong>Keywords:</strong>
-      <span>data structures, algorithm, Python</span>
-    </li>
-    <li class="teaching_item">
-      <strong>Computational Mathematics II</strong>
-      <em class="teaching_semester">SS 2025</em>
-      <strong>Keywords:</strong>
-      <span>data structures, algorithms, Julia</span>
-    </li>
-    <li class="teaching_item">
-      <strong>Discrete Mathematics II</strong>
-      <em class="teaching_semester">WS 2025/26</em>
-      <strong>Keywords:</strong>
-      <span>algebraic curves, tropical geometry</span>
-    </li>
-    <li class="teaching_item">
-      <strong>Computational Mathematics II</strong>
-      <em class="teaching_semester">SS 2026</em>
-      <strong>Keywords:</strong>
-      <span>data structures, algorithms, Julia</span>
-    </li>
-  </ul>
+  <table class="teaching_table">
+    <thead>
+      <tr><th>Semester</th><th>Course</th><th>Keywords</th></tr>
+    </thead>
+    <tbody>
+      <tr class="teaching_group"><th colspan="3">Technische Universität Berlin <em>Teaching Assistant</em></th></tr>
+      <tr><td>SS 2026</td><td>Computational Mathematics II</td><td>data structures, algorithms, Julia</td></tr>
+      <tr><td>WS 2025/26</td><td>Discrete Mathematics II</td><td>algebraic curves, tropical geometry</td></tr>
+      <tr><td>SS 2025</td><td>Computational Mathematics II</td><td>data structures, algorithms, Julia</td></tr>
+      <tr><td>WS 2024/25</td><td>Computational Mathematics I</td><td>data structures, algorithms, Python</td></tr>
+      <tr><td>SS 2024</td><td>Computational Mathematics II</td><td>data structures, algorithms, Julia</td></tr>
+      <tr><td>WS 2023/24</td><td>Mathematical Physics I</td><td>dynamical systems, differential equations</td></tr>
+      <tr><td>SS 2023</td><td>Computational Mathematics II</td><td>data structures, algorithms, Julia</td></tr>
+      <tr><td>WS 2022/23</td><td>Computational Mathematics I</td><td>data structures, algorithms, Python</td></tr>
+    </tbody>
+    <tbody>
+      <tr class="teaching_group"><th colspan="3">Goethe University Frankfurt <em>Student Assistant</em></th></tr>
+      <tr><td>SS 2022</td><td>Discrete Mathematics</td><td>optimization, matroid theory</td></tr>
+      <tr><td>SS 2022</td><td>Elementary Mathematics II</td><td>elementary geometry, constructions</td></tr>
+      <tr><td>WS 2021/22</td><td>Introduction to Computer-Oriented Mathematics</td><td>numerics, algorithms, programming</td></tr>
+      <tr><td>WS 2021/22</td><td>Elementary Mathematics I</td><td>linear algebra, divisibility, proofs</td></tr>
+      <tr><td>SS 2019</td><td>Discrete Mathematics</td><td>optimization, matroid theory</td></tr>
+      <tr><td>SS 2019</td><td>Elementary Mathematics II</td><td>elementary geometry, constructions</td></tr>
+      <tr><td>WS 2018/19</td><td>Elementary Mathematics I</td><td>linear algebra, divisibility, proofs</td></tr>
+      <tr><td>WS 2017/18</td><td>Elementary Mathematics I</td><td>linear algebra, divisibility, proofs</td></tr>
+    </tbody>
+  </table>
 </section>
 </body>
 </html>

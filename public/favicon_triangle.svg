@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<style>path{fill:none;stroke:#001514;stroke-width:2.6;stroke-linejoin:round}.a{fill:#F9A03F}.b{fill:#3b754c}@media(prefers-color-scheme:dark){path{stroke:#f5f5f5}.b{fill:#5fae78}}</style>
+<path d="M16,6.5 L26.39,24.5 L5.61,24.5Z"/>
+<circle cx="5.61" cy="24.5" r="4.6" class="a"/>
+<circle cx="26.39" cy="24.5" r="4.6" class="b"/>
+</svg>

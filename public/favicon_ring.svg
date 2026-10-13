@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<style>path{stroke-linejoin:round;stroke-width:1.4}.d{fill:#001514;stroke:#001514}.a{fill:#F9A03F;stroke:#F9A03F}.b{fill:#3b754c;stroke:#3b754c}@media(prefers-color-scheme:dark){.d{fill:#f5f5f5;stroke:#f5f5f5}.b{fill:#5fae78;stroke:#5fae78}}</style>
+<path class="d" d="M16,9 L12.54,3 L19.46,3Z"/>
+<path class="d" d="M22.06,12.5 L25.53,6.5 L28.99,12.5Z"/>
+<path class="d" d="M22.06,19.5 L28.99,19.5 L25.53,25.5Z"/>
+<path class="b" d="M16,23 L19.46,29 L12.54,29Z"/>
+<path class="d" d="M9.94,19.5 L6.47,25.5 L3.01,19.5Z"/>
+<path class="a" d="M9.94,12.5 L3.01,12.5 L6.47,6.5Z"/>
+</svg>
